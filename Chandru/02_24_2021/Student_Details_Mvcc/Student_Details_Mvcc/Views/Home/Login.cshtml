@@ -1,0 +1,99 @@
+﻿@model Student_Details_Mvcc.Models.UserRegistration
+
+<h2>Login</h2>
+
+<style>
+    .badge-danger {
+        color: white;
+        background-color: red;
+    }
+</style>
+
+
+@using (Html.BeginForm("Login", "Home", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { id = "addUser" }))
+{
+
+    @Html.AntiForgeryToken()
+   
+
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email)
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control User", @placeholder = "Email" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password)
+
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control pwd", @placeholder = "Password" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+        </div>
+
+        <div class="form-group">
+            <div>
+                <input type="submit" value="Login" class="btn btn-danger" />
+
+                @if (ViewBag.msg != null)
+                {
+                    <script type="text/javascript">
+                        alert("Login Successfully!");
+                          window.location.href ="@Url.Action("stuRegis")";
+                                    
+                    </script>
+                }
+                @*@Html.ActionLink("Register", "Register", "Controller", new { @class = "btn btn-primary" })*@
+            </div>
+        </div>
+        @Html.ValidationSummary(true)
+    </div>
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#addUser').bootstrapValidator({
+            fields: {
+                Email: {
+                    selector: '.User',
+                    message: 'name not valid',
+                    validators: {
+                        notEmpty: {
+                            message: 'Name can not empty'
+                        },
+
+                    }
+                },
+                Password: {
+                    selector: '.pwd',
+                    message: 'Password not valid',
+                    validators: {
+                        notEmpty: {
+                            message: 'Password can not empty'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 12,
+                            message: 'Password will be 6 to 12 digite'
+                        }
+                    }
+                }
+            }
+        })
+    })
+</script>
+
+
+
+
+
+
+
+

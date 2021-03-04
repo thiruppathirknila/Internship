@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Student_Details_Mvcc.Models.Viewmodel>
+@{
+   
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="@Url.Action("~/scripts/jquery-3.3.1.min.js")"></script>
+    <script type="text/javascript" src="@Url.Action("~/scripts/bootstrap.min.js")"></script>
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <h4 class="text-center text-uppercase">Student List</h4>
+        <table class="table table-striped table-bordered">
+            <thead class="bg-dark text-danger">
+                <tr>
+                    <th>Roll_NO</th>
+                    <th>StudentName</th>
+                    <th>Class</th>
+                    <th>Section</th>
+                    <th>Id</th>
+                    <th>Tamil</th>
+                    <th>English</th>
+                    <th>Maths</th>
+                    <th>Science</th>
+                    <th>SocialScience</th>
+                    <th style="background-color:aqua">Total</th>
+                    <th>StdId</th>
+                    <th>Rank</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.employee.RoleNo</td>
+                    <td>@item.employee.Std_Name</td>
+                    <td>@item.employee.std_Class</td>
+                    <td>@item.employee.std_Section</td>
+                    <td>@item.department.Id</td>
+                    <td>@item.department.Mark1</td>
+                    <td>@item.department.Mark2</td>
+                    <td>@item.department.Mark3</td>
+                    <td>@item.department.Mark4</td>
+                    <td>@item.department.Mark5</td>
+                    <td>@item.department.Total</td>
+                    <td>@item.department.StdId</td>
+                    <td>@item.Rank</td>
+
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

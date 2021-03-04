@@ -1,0 +1,154 @@
+﻿@model Student_Details_Mvcc.Models.Markmodel
+
+@{
+    ViewBag.Title = "CreateDetails";
+}
+
+<div class="row justify-content-md-start">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Wellcome
+            </div>
+            <div class="card-body">
+                @if (Session["FullName"] != null)
+                {
+                    <p>Name: @Session["FullName"].ToString()</p>
+                    <p>Email: @Session["Email"].ToString()</p>
+                    <a href="@Url.Action("Logout","Home")" class="btn btn-warning">Logout</a>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<style>
+    .badge-danger {
+        color: white;
+        background-color: red;
+    }
+</style>
+
+<hr />
+<h2 style="color:aqua" aligen="center">StudentDetails</h2>
+
+
+@using (Html.BeginForm("CreateDetails", "Home", new { returnUrl = Request.QueryString["ReturnUrl"] }, FormMethod.Post, new { id = "addUser" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StdId, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("StdId", null, "--Select--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StdId, "", new { @class = "badge badge-danger " })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mark1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mark1, new { htmlAttributes = new { id = "textone", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mark1, "", new { @class = "badge badge-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mark2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mark2, new { htmlAttributes = new { id = "texttwo", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mark2, "", new { @class = "badge badge-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mark3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mark3, new { htmlAttributes = new { id = "texthree", @class = "form-control " } })
+                @Html.ValidationMessageFor(model => model.Mark3, "", new { @class = "badge badge-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mark4, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mark4, new { htmlAttributes = new { id = "textfour", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mark4, "", new { @class = "badge badge-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mark5, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mark5, new { htmlAttributes = new { id = "textfive", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mark5, "", new { @class = "badge badge-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Total, new { htmlAttributes = new { id = "result", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Total, "", new { @class = "badge badge-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Save" class="btn btn-success" />
+                @if (ViewBag.msg != null)
+                {
+                    <script type="text/javascript">
+                        alert("Student Add Successfully!");
+                         window.location.href ="@Url.Action("GetMark")";
+                    </script>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+@*<input type="text" name="value1" id="textone">
+    <input type="text" name="value2" id="texttwo">*@
+@*<input type="text" name="result" id="result">*@
+
+<script>
+    $('#textfive').keyup(function () {
+        var textone;
+        var texttwo;
+        var texthree;
+        var textfour;
+        var textfive;
+        textone = parseFloat($('#textone').val());
+        texttwo = parseFloat($('#texttwo').val());
+        texthree = parseFloat($('#texthree').val());
+        textfour = parseFloat($('#textfour').val());
+        textfive = parseFloat($('#textfive').val());
+        var result = textone + texttwo + texthree + textfour + textfive;
+        $('#result').val(result);
+
+
+    });
+</script>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

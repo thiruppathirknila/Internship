@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Student_Details_Mvcc.Models.Studentmodel>
+
+@{
+    ViewBag.Title = "studentView";
+}
+<style>
+    .btn{
+        width:80px;
+    }
+    .table-responsive{
+        background-color:whitesmoke;
+    }
+</style>
+
+<h2>studentView</h2>
+
+<p>
+    @Html.ActionLink("Create New", "stuRegis")
+</p>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>RoleNo</th>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Section</th>
+            <th>Gender</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var employee in Model)
+        {
+        <tr>
+            <td>@employee.RoleNo</td>
+            <td>@employee.Std_Name</td>
+            <td>@employee.std_Class</td>
+            <td>@employee.std_Section</td>
+            <td>@employee.Gender</td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = employee.RoleNo }) |
+                @Html.ActionLink("Details", "Details", new { id = employee.RoleNo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = employee.RoleNo })
+            </td>
+
+        </tr>
+
+       
+    }
+        </tbody>
+
+
+    </table>

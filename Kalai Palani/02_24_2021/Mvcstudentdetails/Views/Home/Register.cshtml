@@ -1,0 +1,79 @@
+﻿@model Mvcstudentdetails.Models.ModelStudent
+
+@{
+    ViewBag.Title = "Register";
+}
+<style>
+    .badge-danger{
+        background-color:red;
+    }
+</style>
+<div class="row justify-content-md-center">
+    <div class="col-md-5">
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+        {
+            //@Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Register</div>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control", @placeholder = "Name" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "badge badge-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Gender)
+                        @Html.TextBoxFor(m => m.Gender, "", new { @class = "form-control", @placeholder = "Gender" })
+                        @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "badge badge-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Address)
+                        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
+                        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Phone)
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @placeholder = "Phone" })
+                        @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "badge badge-danger" })
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Std_Class)
+                        @Html.TextBoxFor(m => m.Std_Class, new { @class = "form-control", @placeholder = " Std_Class" })
+                        @Html.ValidationMessageFor(m => m.Std_Class, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Std_Sec)
+                        @Html.TextBoxFor(m => m.Std_Sec, new { @class = "form-control", @placeholder = "Std_Sec" })
+                        @Html.ValidationMessageFor(m => m.Std_Sec, "", new { @class = "badge badge-danger" })
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-danger" value="Register" />
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
