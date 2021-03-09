@@ -1,0 +1,54 @@
+<h1> Student Form</h1>
+<mat-tab-group>
+  <mat-tab label="Login"> 
+   
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Email" value="" required>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field><br>
+   <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput placeholder="Password" value="" requried>
+        <mat-icon matSuffix>visibility_off</mat-icon>
+    </mat-form-field><br>
+      <button class="mat-button" mat-button color="primary">Login</button>
+      <mat-icon >login</mat-icon>
+    </form>
+  </mat-tab>
+  
+  <mat-tab label="Register"> 
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input  matInput placeholder="Username" value="" required>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field><br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Email" value="" required>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field><br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input  matInput placeholder="Password" value="" required>
+        <mat-icon matSuffix>visibility_off</mat-icon>
+      </mat-form-field><br>
+      <mat-form-field class="example-full-width">
+        <mat-label>ConfirmPassword</mat-label>
+        <input type="confirmpassword" matInput placeholder="ConfirmPassword" value=""  required />
+        <mat-icon matSuffix>visibility_off</mat-icon>
+      </mat-form-field><br>
+      <mat-radio-group >
+        <mat-label ><strong>Gender:</strong></mat-label>
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="2">Female</mat-radio-button>
+      </mat-radio-group><br>
+         
+      <button class="mat-button" mat-button color="primary">Register</button>
+      
+    </form>
+  </mat-tab>
+  
+</mat-tab-group>
