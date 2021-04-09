@@ -1,0 +1,28 @@
+<h1 [ngStyle]="{'color': 'green'}">Student Details</h1>
+<table border="table table-striped table-bordered"  [ngStyle]="{'background-color': 'lightpink'}">
+  <thead>
+      <tr>
+        <th>Id</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>DOB</th>
+          <th>Fees</th>
+        </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let stu of student">
+    
+
+          <td>{{stu.Id}}</td>
+          <td>{{stu.Name|lowercase}}</td> 
+         
+           <td [ngClass]="{Male:stu.Gender === 'Male', Female:stu.Gender === 'Female'}">{{stu.Gender|uppercase}}
+          </td>
+           <td>{{stu.DOB|date:"medium"|uppercase}}</td>
+           <td>{{stu.Fees|currency:'INR'}}</td>       
+             </tr>
+                <tr *ngIf="!student||student.length==0">
+                  <td colspan="6">No Datas</td>
+                </tr>
+  </tbody>
+</table>
