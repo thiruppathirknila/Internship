@@ -1,0 +1,67 @@
+<h1>Student Registration Form</h1>
+<form  autocomplete="off"  #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="stuId" [value]="service.formData.stuId"/>
+    <div class="form-group">
+        <label>Student Name</label>
+        <input class="form-control " placeholder="Enter the Name"
+        name="stuName" #stuName="ngModel" [(ngModel)]="service.formData.stuName" 
+         required minlength="3" >
+         <span *ngIf="stuName.invalid &&stuName.touched" class="error">Student Name Field is Required</span>
+    </div>
+ 
+    <div class="form-group">
+        <label>Gender</label>      
+            <br>
+               <label><input type="radio" value="Male" name="gender" #gender="ngModel" [(ngModel)]="service.formData.gender">Male</label>
+               <label><input type="radio" value="Female" name="gender" #gender="ngModel" [(ngModel)]="service.formData.gender">Female</label>
+               <span *ngIf="gender.invalid &&gender.touched" class="error">Gender Field is Required</span>
+            </div>
+ 
+   <div class="form-group">
+        <label>DateOfBirth</label>
+        <input id="dateOfBirth" class="form-control form-control-lg" placeholder="Enter the DateOfBirth"
+       type="date" name="dateOfBirth" #dateOfBirth="ngModel" [(ngModel)]="service.formData.dateOfBirth"
+        required/>
+        <span *ngIf="dateOfBirth.invalid &&dateOfBirth.touched" class="error">DateOfBirth Field is Required</span>
+   </div>
+
+    <div class="form-group">
+        <label>Mobileno</label>
+        <input class="form-control form-control-lg" placeholder="Enter the Mobileno"
+        name="mobileno" #mobileno="ngModel" [(ngModel)]="service.formData.mobileno"  
+        required maxlength="10"/>
+        <span *ngIf="mobileno.invalid &&mobileno.touched" class="error">Mobileno Field is Required</span>
+    </div>
+
+        <div class="form-group">
+            <label>Address</label>
+            <input class="form-control form-control-lg" placeholder="Enter the Address"
+            name="address" #address="ngModel" [(ngModel)]="service.formData.address"  
+            required/>
+            <span *ngIf="address.invalid &&address.touched" class="error">Address Field is Required</span>
+    </div>
+
+
+<div class="form-group">
+    <label>District</label>    
+    <ngx-select  [items]="districts"  name="district" 
+ [formControl]="control"  name="district" [(ngModel)]="service.formData.district" >
+     
+  
+</ngx-select >
+
+<!--         
+    <div class="form-group">
+        <label>District</label>       
+    <input type="text" class="form-control form-control-lg"   [formControl]="control"  placeholder="Enter the District"  name="district" [(ngModel)]="service.formData.district" >
+    
+    <div>
+         <p *ngFor="let data of suggestions | async">{{data}}</p>
+        </div>
+  -->
+    </div>
+
+    <div class="form-group">
+    <button class="btn btn-success btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+    </div>
+</form>
