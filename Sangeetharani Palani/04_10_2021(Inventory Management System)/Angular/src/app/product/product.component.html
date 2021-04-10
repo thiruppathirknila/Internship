@@ -1,0 +1,42 @@
+
+ <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-white">Inventory Management System</a>      
+    <a routerLink='/product' routerLinkActive='active' (click)="list()">Product Details</a>
+    <button class="btn btn-danger my-2 my-sm-0" (click)="logOut()">Logout</button>  
+</nav>
+    <div *ngIf="products">
+        <div class="row">
+            <div class="col-md-6">  
+               <h1>Product Details</h1>  <br>          
+       
+                <button  class="btn btn-outline-success"  routerLink='/add-product'routerLinkActive='active'><i class="fa fa-plus" ></i> New Item </button><br>
+                      <table class="center"  border="3">
+                    <thead >
+                        <tr>
+                            <th [hidden]="true">ProductId</th>
+                            <th>ProductName</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>         
+                            <th>Actions</th>    
+                        </tr>
+                    </thead>
+                     <tbody>
+                         <tr *ngFor="let pro of products">
+                           <td [hidden]="true">{{pro.productId}}</td>
+                           <td>{{pro.productName}}</td>
+                           <td>{{pro.description}}</td>
+                           <td>{{pro.price}}</td>
+                           <td>{{pro.quantity}}</td>
+                           <td>  
+                             <i class="fas fa-edit"  (click)="edit(pro.productId)"></i>  &nbsp;&nbsp;&nbsp;&nbsp;           
+                             <i class="fas fa-trash-alt fa-lg text-danger" (click)="delete(pro.productId)"></i>
+                           </td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div> 
+    
+ 
