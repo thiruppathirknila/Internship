@@ -1,0 +1,55 @@
+<div class="example-button-row">
+  <button mat-raised-button color="primary" routerLink='/employee' routerLinkActive='active' (click)="list()">Employee Details</button>
+  
+  <button  style="float: right;"  mat-raised-button color="warn"  (click)="logOut()"><mat-icon>logout</mat-icon>Logout
+    
+  </button>
+   </div>
+
+    
+<mat-card >
+<div *ngIf="employees"> 
+   <button  mat-icon-button color="primary"  routerLink='/add-employee' routerLinkActive='active'>
+      <mat-icon>person_add</mat-icon>
+    </button>
+  
+    <table   >
+<thead>
+<tr>
+ <th [hidden]='true'>EmployeeId</th>
+ <th>EmployeeName</th>
+ <th>Department</th>
+ <th>Designation</th>
+ <th>DOB</th>
+ <th>Salary</th>
+ <th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let emp of employees">
+ <td [hidden]='true'>{{emp.employeeId}}</td>
+ <td>{{emp.employeeName}}</td>
+ <td>{{emp.department}}</td>
+ <td>{{emp.designation}}</td>
+ <td>{{emp.dob}}</td>
+ <td>{{emp.salary}}</td>
+ <td>
+  <div class="example-button-row">
+ 
+    <button mat-icon-button color="primary"  (click)="edit(emp.employeeId)" >
+      <mat-icon>edit</mat-icon>
+   </button>  
+   <button mat-icon-button color="warn" (click)="delete(emp.employeeId)">
+      <mat-icon>delete</mat-icon>
+   </button>
+</div>
+
+</td>
+</tr>
+</tbody>
+</table> 
+</div>
+
+</mat-card>
+     
+      

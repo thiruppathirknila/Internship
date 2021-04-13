@@ -1,0 +1,26 @@
+<form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
+   
+    <b style="color:black;" class="center">Employee Login</b><br>
+
+<mat-card style="text-align: center;">
+   <mat-form-field class="form-group"   appearance="fill"> 
+    
+        <mat-label>UserName</mat-label>
+        <mat-icon matSuffix> person</mat-icon>  
+        <input  matInput placeholder="username" id="username" name="username" ngModel class="form-control" placeholder="UserName" required>
+   </mat-form-field><br>
+        <mat-form-field class="form-group" appearance="fill">  
+            <mat-label>Password</mat-label>  
+            <input  matInput placeholder="Password" id="password" name="password" ngModel class="form-control"  matInput [type]="hide ? 'password' : 'text'" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+             </button>
+        </mat-form-field><br>
+            <div mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" > <mat-icon>login</mat-icon>Login
+       
+    </button>
+    </div>
+</mat-card>
+
+</form>
