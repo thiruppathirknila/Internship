@@ -1,0 +1,13 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-white"><b>Inventory Management System</b></a>      
+      <button class="btn btn-danger my-2 my-sm-0" (click)="logOut()"><i class="fa fa-sign-out"></i><b>Logout</b></button>  
+</nav>
+
+ <div>  
+    Select Product :  
+    <select  [(ngModel)]="productList.productName">  
+         <option *ngFor="let prod of productList">{{prod.productName}} </option>  
+     </select>  
+
+</div>  
+ 
