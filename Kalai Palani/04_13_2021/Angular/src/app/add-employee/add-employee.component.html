@@ -1,0 +1,49 @@
+
+   
+
+<form #Empform="ngForm" (ngSubmit)="get(Empform.value)" >
+   
+    <mat-card> <b>EmployeeDetail</b><br>
+
+        <input  matInput placeholder="employeeId" [hidden]="true" name="employeeId"  #employeeId="ngModel" [(ngModel)]="employees.employeeId"   class="form-control" placeholder="EmployeeName" required>
+  
+    <mat-form-field class="form-group"  > 
+        <mat-label>EmployeeName</mat-label>
+        <input  matInput placeholder="employeename"  name="employeeName"  #employeeName="ngModel" [(ngModel)]="employees.employeeName"   class="form-control" placeholder="EmployeeName" required>
+    </mat-form-field><br>
+
+     <mat-form-field class="form-group"   > 
+        <mat-label>Department</mat-label> 
+        <input  matInput placeholder="department"  name="department"  #department="ngModel" [(ngModel)]="employees.department" class="form-control" placeholder="Department" required>
+     </mat-form-field><br>
+
+     <mat-form-field class="form-group"   > 
+        <mat-label>Designation</mat-label> 
+        <input  matInput placeholder="designation"  name="designation"  #designation="ngModel" [(ngModel)]="employees.designation" class="form-control" placeholder="Designation" required>
+     </mat-form-field><br>
+        
+    <mat-form-field  class="form-group"  >
+        <mat-label>DOB</mat-label>
+        <input matInput [matDatepicker]="picker"  name="dob"  #dob="ngModel" [(ngModel)]="employees.dob" class="form-control" placeholder="DOB" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field><br> 
+       
+    <mat-form-field class="form-group" > 
+        <mat-label>Salary</mat-label> 
+        <input  matInput placeholder="salary" type="number" name="salary"  #salary="ngModel" [(ngModel)]="employees.salary" class="form-control" placeholder="Salary" required>
+     </mat-form-field><br>   
+
+       
+    <div mat-dialog-actions align="center">
+    <button  mat-flat-button  color="primary" > <mat-icon>save </mat-icon>Save</button> &nbsp;
+    <button  (click)="cancel()" mat-flat-button color="warn" > <mat-icon>cancel</mat-icon>Cancel</button>
+    </div>
+   
+</mat-card>
+
+    </form>
+
+
+
+ 
