@@ -1,0 +1,36 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-white"><b>Inventory Management System</b></a>      
+      <button class="btn btn-danger my-2 my-sm-0" (click)="logout()"><i class="fa fa-sign-out"></i><b>Logout</b></button>  
+</nav>
+
+ <div>  
+    Select Product :  
+    <select  [(ngModel)]="productList.productName" >  
+         <option *ngFor="let pro of productList" >{{pro.productName}} </option>  
+     </select>  &nbsp;
+     <button type="submit" (click)="SelectProduct(productList.productName)">Add</button>
+ 
+<h4>Product Details</h4>  
+<table class="table" >  
+  <tr >    
+    <th>Product Name</th>
+    <th>Price</th>
+    <th>Quantity</th>     
+    <th>Total</th>   
+  </tr>  
+  <tr  *ngFor="let pro of ProductDetail" >  
+    <td>{{pro.productName}}</td>  
+    <td>{{pro.price}}</td>  
+    <td><input required #quantity ="ngModel"  [(ngModel)]=pro.quantity  class="form-control" name="quantity" placeholder="Enter the Quantity"></td>
+    <td><input required #total ="ngModel"  [(ngModel)]=pro.quantity*pro.price  class="form-control" name="total"></td>
+    <!-- <td><button type="submit" (click)="findsum(ProductDetail)">Submit</button></td> -->
+  </tr> 
+<tr>
+  <td colspan="2"></td>
+  <td><button type="submit" (click)="invoicelist()">Submit</button></td>
+  </tr>
+  <tr>  
+    <td colspan="3"></td> 
+    <td><b>Sum:₹{{sum}}</b> </td>  
+  </tr>
+</table>  
