@@ -1,0 +1,55 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-white"><b>Inventory Management System</b></a>      
+    <button class="btn btn-danger my-2 my-sm-0" (click)="logOut()"><i class="fa fa-sign-out"></i><b>Logout</b></button>  
+</nav>
+<div class="wrapper">
+  <div class="wrapped-div">
+<div class="container-fluid">
+<h2 class="form-signin-heading"><b>Product</b></h2>    
+    <div class="container">
+      <div class="row justify-content-center">
+    <form #userForm = "ngForm" (ngSubmit) = "add(userForm.value)" class="col-sm-12" >
+        <input required #productId ="ngModel" type="hidden" [(ngModel)]=products.productId class="form-control" name="productId" placeholder="Enter Your Product Name">
+            <div class="form-group">
+        <label>
+         <b>Product Name</b>
+        </label>
+        <input required #productName ="ngModel" type="text" [(ngModel)]=products.productName class="form-control" name="productName" placeholder="Enter Your Product Name">
+      </div>
+      <div class="form-group">
+          <label>
+          <b>Description</b>
+          </label>
+          <input required #description ="ngModel" type="text" [(ngModel)]=products.description  class="form-control" name="description" placeholder="Enter the Description">
+        </div>
+
+        <div class="form-group">
+          <label>
+          <b>Price</b>
+          </label>
+          <input required #price ="ngModel" type="number" [(ngModel)]=products.price  class="form-control" name="price" placeholder="Enter the Price">
+        </div>
+
+        <div class="form-group">
+          <label>
+          <b>Quantity</b>
+          </label>
+          <input required #quantity ="ngModel" type="number" [(ngModel)]=products.quantity  class="form-control" name="quantity" placeholder="Enter the Quantity">
+        </div>
+
+        <div class="form-group">
+          <label>
+          <b> Total</b>
+          </label>
+          <input required #total ="ngModel" type="number" [(ngModel)]=products.quantity*products.price  class="form-control" name="total" placeholder="Enter the Quantity">
+        </div>
+    
+     <div class="row justify-content-center">
+      <button type="submit" class="btn btn-success btn-block"><i class="fa fa-save" style="font: size 48px"></i> &nbsp;<b>Save</b></button>
+      <button type="button" (click)="cancel()" class="btn btn-warning btn-block"><i class="fa fa-times-circle" style="font: size 48px"></i>&nbsp;<b>Cancel</b></button>
+     </div> 
+    </form>
+    </div></div>
+  </div>
+  </div>
+ </div>
