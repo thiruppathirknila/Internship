@@ -1,0 +1,40 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-white"><b>Inventory Management System</b></a>      
+      <a routerLink='/customer' routerLinkActive='active' (click)="listcustomers()">  <b>Customer Details</b></a>
+    <button  class="btn btn-danger my-2 my-sm-0" (click)="logOut()"><i class="fa fa-sign-out"></i><b>Logout</b></button> 
+   </nav>
+       
+        <div class="row" *ngIf="customers">
+            <div class="col-md-6">  
+               <h1>Customer Details</h1><br>                
+                <table class="center"  border="3">
+                    <thead >
+                        <tr>
+                            <!-- <th [hidden]="true">ProductId</th> -->
+                            <th>S.No</th>
+                            <th>Ordered Date</th>
+                            <th>Customer Name</th>
+                            <th>Address</th>
+                            <th>Email Id</th>     
+                            <th>Mobile no</th>     
+             
+                        </tr>
+                    </thead>
+                     <tbody>
+                         <tr *ngFor="let cust of customers;let i =index">
+                            <td>{{i+1}}</td>
+                           <!-- <td >{{cust.customer_Id}}</td>                            -->
+                           <td>{{cust.ordered_Date}}</td>
+                           <td>{{cust.customer_Name}}</td>
+                           <td>{{cust.address}}</td>
+                           <td>{{cust.email_Id}}</td>
+                           <td>{{cust.mobile_no}}</td>
+                                           <!-- <i class="fas fa-edit"  (click)="edit(pro.productId)"></i>  &nbsp;&nbsp;&nbsp;&nbsp;           
+                             <i class="fas fa-trash-alt fa-lg text-danger" (click)="delete(pro.productId)"></i> -->
+                       
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+        </div>
+

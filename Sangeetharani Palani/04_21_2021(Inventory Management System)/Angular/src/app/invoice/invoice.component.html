@@ -1,0 +1,73 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-white"><b>Inventory Management System</b></a>      
+      <button class="btn btn-danger my-2 my-sm-0" (click)="logout()"><i class="fa fa-sign-out"></i><b>Logout</b></button>  
+</nav>
+
+
+<h4>Customer Details</h4>  
+<form #userForm = "ngForm"  class="col-sm-4" > 
+<div class="form-group">
+  <label>
+   <b>Ordered_Date</b>
+  </label>
+  <input required #Orderdate ="ngModel" type="date" [(ngModel)]=invoiceslist.Orderdate class="form-control" name="Orderdate" placeholder="Enter Your Ordered Date">
+</div>
+
+<div class="form-group">
+  <label>
+   <b>Customer_Name</b>
+  </label>
+  <input required #Customername ="ngModel" type="text" [(ngModel)]=invoiceslist.Customername class="form-control" name="Customername" placeholder="Enter Your Customer Name">
+</div>
+
+
+<div class="form-group">
+  <label>
+   <b>Address</b>
+  </label>
+  <input required #Address ="ngModel" type="text" [(ngModel)]=invoiceslist.Address class="form-control" name="Address" placeholder="Enter Your Address">
+</div>
+
+<div class="form-group">
+  <label>
+   <b>Email_Id</b>
+  </label>
+  <input required #Email ="ngModel" type="text" [(ngModel)]=invoiceslist.Email class="form-control" name="Email" placeholder="Enter Your Email ">
+</div>
+
+<div class="form-group">
+  <label>
+   <b>Mobile_no</b>
+  </label>
+  <input required #Mobileno ="ngModel" type="text" [(ngModel)]=invoiceslist.Mobileno class="form-control" name="Mobileno" placeholder="Enter Your Mobile No">
+</div>
+</form>
+<br>
+ <div>  
+    Select Product :  
+    <select  [(ngModel)]="productList.productName" >  
+         <option *ngFor="let pro of productList" >{{pro.productName}} </option>  
+     </select>  &nbsp;
+     <button type="submit" (click)="SelectProduct(productList.productName)">Add</button>
+ 
+<h4>Product Details</h4>  
+<table class="table" >  
+  <tr >    
+    <th>Product Name</th>
+    <th>Price</th>
+    <th>Quantity</th>     
+    <th>Total</th>   
+  </tr>  
+  <tr  *ngFor="let pro of ProductDetail" >  
+    <td>{{pro.productName}}</td>  
+    <td>{{pro.price}}</td>  
+    <td><input required #quantity ="ngModel"  [(ngModel)]=pro.quantity  class="form-control" name="quantity" placeholder="Enter the Quantity"></td>
+    <td><input required #total ="ngModel"  [(ngModel)]=pro.quantity*pro.price  class="form-control" name="total"></td>
+    </tr> 
+
+</table>  
+<!-- <div class="button"> -->
+  <!-- <button  type="submit" (click)="invoicelist()">Submit</button></div><br>  -->
+
+<!-- <button type="submit" (click) = "addinvoice(userForm.value)" class="btn btn-success "><i class="fa fa-save" style="font: size 48px"></i> &nbsp;<b>Save Invoice</b></button> -->
+</div>
