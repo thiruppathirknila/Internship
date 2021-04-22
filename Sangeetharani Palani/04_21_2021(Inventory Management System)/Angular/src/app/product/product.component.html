@@ -1,0 +1,49 @@
+ <nav class="navbar navbar-dark bg-dark">
+ <a class="navbar-brand text-white"><b>Inventory Management System</b></a>      
+ <a routerLink='/product' routerLinkActive='active' (click)="list()">  <i class="fa fa-list"></i><b>Product Details</b></a>
+ <a routerLink='/customer' routerLinkActive='active' (click)="listcustomers()">  <b>Customer Details</b></a>
+ <a routerLink='/invoices' routerLinkActive='active' (click)="invoice()"> <b>Invoice</b></a> 
+ <button  class="btn btn-danger my-2 my-sm-0" (click)="logOut()"><i class="fa fa-sign-out"></i><b>Logout</b></button> 
+</nav>
+
+    <div *ngIf="products">        
+        <div class="row">
+            <div class="col-md-6">  
+               <h1>Product Details</h1><br>                
+                <button  class="btn btn-outline-success"  routerLink='/add-product'routerLinkActive='active'><i class="fa fa-cart-plus" style="font: size 36px"></i> <b>New Item </b></button><br>
+                <table class="center"  border="3">
+                    <thead >
+                        <tr>
+                            <th [hidden]="true">ProductId</th>
+                            <th>S.No</th>
+                            <th>Product Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>     
+                            <th>Total</th>     
+                            <th>Actions</th>    
+                        </tr>
+                    </thead>
+                     <tbody>
+                         <tr *ngFor="let pro of products;let i =index">
+                           <td [hidden]="true">{{pro.productId}}</td>
+                           <td>{{i+1}}</td>
+                           <td>{{pro.productName}}</td>
+                           <td>{{pro.description}}</td>
+                           <td>{{pro.price}}</td>
+                           <td>{{pro.quantity}}</td>
+                           <td>{{pro.total}}</td>
+                           <td>  
+                             <i class="fas fa-edit"  (click)="edit(pro.productId)"></i>  &nbsp;&nbsp;&nbsp;&nbsp;           
+                             <i class="fas fa-trash-alt fa-lg text-danger" (click)="delete(pro.productId)"></i>
+                           </td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>
+        </div>
+    </div> 
+    
+
+    
+    
