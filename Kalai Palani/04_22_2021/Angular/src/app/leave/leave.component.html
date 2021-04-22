@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>EmployeeName</th>
+            <th>FromDate</th>
+            <th>EndDate</th>
+            <th>LeaveType</th>
+            <th>Comments</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let lev of leaves"> 
+            <td>{{lev.id}}</td>
+            <td>{{lev.employeeName}}</td>
+            <td>{{lev.fromDate}}</td>
+            <td>{{lev.endDate}}</td>
+            <td>{{lev.leaveType}}</td>
+            <td>{{lev.comments}}</td>
+            <td>{{lev.status}}</td>
+        </tr>
+    </tbody>
+</table>

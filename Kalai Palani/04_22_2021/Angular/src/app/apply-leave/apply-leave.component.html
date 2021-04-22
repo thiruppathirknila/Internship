@@ -1,0 +1,48 @@
+
+<form  style="text-align: center;"  #Levform="ngForm" (ngSubmit)="get(Levform.value)">
+    <div class="leave" style="background-color:lightslategray" > <b  >ApplyLeave</b><br>
+
+     
+    <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="id" name="id"  #id="ngModel" [(ngModel)]="leaves.id" class="form-control" placeholder="Id">
+    </mat-form-field>        
+
+    <mat-form-field class="form-group"  appearance="outline" > 
+        <mat-label>EmployeeName</mat-label>
+        <input  matInput placeholder="employeeName" name="employeeName"  #employeeName="ngModel" [(ngModel)]="leaves.employeeName" class="form-control" placeholder="EmployeeName" required>
+    </mat-form-field><br> 
+
+    <mat-form-field class="form-group" appearance="outline">
+        <mat-label>FromDate</mat-label>
+        <input matInput [matDatepicker]="picker1"  name="fromDate"  #fromDate="ngModel" [(ngModel)]="leaves.fromDate" class="form-control" required>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field><br>
+      
+    <mat-form-field class="form-group" appearance="outline">
+        <mat-label>EndDate</mat-label>
+        <input matInput [matDatepicker]="picker2" name="endDate"  #endDate="ngModel" [(ngModel)]="leaves.endDate" class="form-control" required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary"></mat-datepicker>
+    </mat-form-field><br>
+
+    <mat-form-field class="form-group" appearance="outline">
+        <mat-label>LeaveType</mat-label>
+        <select matNativeControl  name="leaveType"  #leaveType="ngModel" [(ngModel)]="leaves.leaveType"  class="form-control" required>
+            <option value="selectedleavetype">---SelectedLeaveType---</option>
+            <option value="sickleave">SickLeave</option>
+            <option value="casualleave">CasualLeave</option>
+        </select>
+    </mat-form-field><br>
+
+    <mat-form-field class="form-group" appearance="outline">
+        <mat-label> Comments</mat-label>
+        <textarea matInput name="comments"  #comments="ngModel" [(ngModel)]="leaves.comments" class="form-control" required></textarea>
+    </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="center">
+        <button  mat-flat-button  color="primary" > <mat-icon>save </mat-icon>Submit</button>&nbsp;&nbsp;
+        <button  (click)="cancel()" mat-flat-button color="warn" > <mat-icon>cancel</mat-icon>Cancel</button> 
+    </div>
+</form>
